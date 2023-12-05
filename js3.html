@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        h1 {
+            font-size: 4rem;
+        }
+        .clicked{
+            background-color: yellow;
+            color: rebeccapurple;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="title" class="kmj" >Title</h1>
+    <div id="grp">  
+        <p>이름 : 김이름</p>
+        <p>직업 : 개발자</p>
+        <p class="btn">연락처 : 0000</p>
+        <p id="title_sub">타이틀 친구</p>
+        <form action="#" method="get" name="order">
+            <legend> 상품 정보 표기</legend>
+            <ul>
+                <li>
+                    <label>이름</label>
+                    <input type="text" name="orderName" id="orderName">
+                </li>
+                <li>
+                    <label>상품</label>
+                    <input type="text" name="product" id="product" value="pr">
+                </li>
+            </ul>
+        </form>
+    </div>
+    <script>
+        document.querySelector('#orderName');
+        document.querySelector('#orderName').value;//값 가져오기
+        // ex) 폼태그와 input 타입에 name 속성만 있음. id나 class를 주기 부담스러운 상황
+        console.log(document.order.product.value);// 이름 연결
+        //name 이나 이런게 아무것도 없음
+        console.log(document.forms[0].elements[1].value);// 컬렉션 구조
+
+        console.log( document.querySelectorAll('p')[1]);
+        console.log( document.querySelectorAll('p')[2]);
+
+    </script>
+    
+    <script>
+        // 웹 문서에서 원하는 요소를 찾아가는 것 (access) 접근이라고 함 
+        // querySelector(선택자): 한 개의 값 만 반환 
+        //  querySelectorAll(선택자) : 메서드 반환 값이 다수이면 모두 []노드 리스트로 반환(저장)
+        // 선택자 : id(#) , class(.), <h1>...등의 태그 종류는 그냥 씀
+        
+        // console.log(document.querySelector('h1')); : 여러개가 있다면 사용이 불가능
+        // console.log(document.querySelectorAll('h1')); : 여러개가 노드리스트라는 형태로 옴.
+        // document.getElementsByTagName('h1');
+
+        // getId,Class,Name, getElement vs querySelector
+        // id값이나  class, 태그 이름을 사용해서 접근하는 방식은 유사함
+        // querySelector를 이용하면 선택자를 조합해서 접근이 가능 (#detail > p) : Jquery와 사용법이 유사해서 배울때 좋음.
+
+        // innerText, innerHTML, textContent : 프로퍼티 사용
+        // innerText : 순수 텍스트를 가져오거나, 해당 요소에 텍스트를 지정
+        // innerHTML :  태그와 함께 텍스트를 가져오거나 해당 요소에 태그와 함께 텍스트를 지정
+        // textContent : 텍스트를 가져오되, 화면에 보이는 그대로가 아니라 소스에 있는대로  가져옴.
+           
+            console.log( document.querySelector('#grp').innerText);
+            console.log( document.querySelector('#grp').innerHTML);
+            console.log( document.querySelector('#grp').textContent);
+
+            const title = document.querySelector('#title');
+            const title_sub = document.querySelector('#title_sub');
+            
+            console.log(title.innerText);
+            // title.onclick =()=>
+            // title.addEventListener
+           
+            // 모든 태그들은 style이라는 프로퍼티를 가지고 있음
+            title_sub.onclick = function(){
+                // classList -> 클래스 배열? 더하고 빼고 가능. 부트스트랩 원리
+                title.classList.toggle("clicked")
+                // if(title.classList.contains("clicked")){
+                //     title.classList.remove("clicked");
+                // } else{
+
+                //     title.classList.add("clicked");
+                // }
+
+                
+                // document.querySelector(".btn").classList.add("clicked")
+
+                // title.style.background ="yellow"
+                // title.style.color ="green"
+                // if(title.innerText == "Title")
+                // {
+                //     title.innerText = "타이틀";
+                // } else {
+                //     title.innerText = "Title";
+                // }
+            }
+    </script>
+</body>
+</html>
